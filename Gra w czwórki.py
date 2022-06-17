@@ -31,7 +31,7 @@ def main():
                 turn -= 1
             if checkGameOver(board, playerToken1):
                 gameOver = True
-                print(f'Koniec gry, wygral gracz {playerName1}')
+                print(f'Koniec gry, wygrał gracz {playerName1}')
                 saveGameResult(board, playerName1)
         else:
             col = chooseCol(board, playerName2)
@@ -42,7 +42,7 @@ def main():
                 turn -= 1
             if checkGameOver(board, playerToken2):
                 gameOver = True
-                print(f'Koniec gry, wygral gracz {playerName2}')
+                print(f'Koniec gry, wygrał gracz {playerName2}')
                 saveGameResult(board, playerName2)
 
         if checkTie(board):
@@ -57,7 +57,7 @@ def main():
 
 
 def inputPlayerName():
-    playerName = input("Imię pierwszego gracza: ")
+    playerName = input("Imię gracza: ")
     print(f'Witaj {playerName}')
     return playerName
 
@@ -71,7 +71,7 @@ def printBoard(board):
 def chooseCol(board, playerName):
     col = inputCol(playerName)
     while checkCol(board, col) == False:
-        print(f'Kolumna {col+1} jest pelna, wybierz inna kolumne')
+        print(f'Kolumna {col+1} jest pełna, wybierz inną kolumnę')
         col = inputCol(playerName)
     return col
 
@@ -134,7 +134,7 @@ def checkDiagWin(board, token):
                 return True
 
 def reverseMove(board, col, row):
-    answer = input("Czy chcesz cofnac swój ruch?[T/N] ")
+    answer = input("Czy chcesz cofnąć swój ruch?[T/N] ")
     if answer.lower() == "t" or answer.lower() == "tak" or answer.lower() == "true":
         board[row][col] = "-"
         print("Ruch cofnięty.")
@@ -151,7 +151,7 @@ def saveGameResult(board, playerName):
             fileRow += (board[row][column] + " ")
         file.write(fileRow + "\n")
     if playerName:
-        file.write(f'Koniec gry, wygral gracz {playerName}')
+        file.write(f'Koniec gry, wygrał gracz {playerName}')
     else:
         file.write(f'Koniec gry, remis!')
     
